@@ -1,25 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Fragment } from "react";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <Fragment>
+      <header>
+        <nav>
+          <ul>
+            <li>The Shoppies</li>
+            <li>
+              built and designed by <strong>satvir sandhu</strong>
+            </li>
+          </ul>
+        </nav>
+        <div className="left">
+          <h1>Celebrate Cinema</h1>
+          <p>Nominate your favourite movies for The Shoppies.</p>
+          <button>Get Started</button>
+        </div>
+        <div className="right">
+          <div className="gallery">LOL</div>
+        </div>
       </header>
-    </div>
+    </Fragment>
   );
 }
 

@@ -1,0 +1,19 @@
+$primary-color: #000639;
+$secondary-color: #f2e0cf;
+$accent-color: #95bf47;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+}
+
+header {
+  background: $secondary-color;
+  width: 100vw;
+  height: 100vh;
+}

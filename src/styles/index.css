@@ -24,7 +24,7 @@ header .content {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  height: 100%;
+  height: calc(100% - 6rem);
 }
 
 header .left,
@@ -45,10 +45,6 @@ header .right {
 
 header .left {
   width: 60%;
-}
-
-header .right {
-  width: 35%;
 }
 
 header h1 {
@@ -107,7 +103,7 @@ nav li {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 100%;
+  width: 320px;
 }
 
 .gallery .poster {

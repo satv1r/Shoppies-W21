@@ -1,4 +1,5 @@
 import React, { Fragment } from "react";
+import MovieGallery from "./components/MovieGallery";
 
 function App() {
   return (
@@ -21,7 +22,7 @@ function App() {
             <button>Get Started</button>
           </div>
           <div className="right">
-            <div className="gallery">LOL</div>
+            <MovieGallery />
           </div>
         </div>
       </header>

@@ -1,19 +1,82 @@
+// Variables
 $primary-color: #000639;
 $secondary-color: #f2e0cf;
 $accent-color: #95bf47;
 
+// Setup
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-
-body {
   font-family: "Montserrat", sans-serif;
 }
 
+// Utilities
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+// Main
 header {
   background: $secondary-color;
   width: 100vw;
   height: 100vh;
+  .content {
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+  }
+
+  .left,
+  .right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transform: translate(0, -10%);
+  }
+
+  .left {
+    width: 60%;
+  }
+
+  .right {
+    width: 35%;
+  }
+
+  h1 {
+    font-size: 4rem;
+    font-weight: 700;
+  }
+  p {
+    font-size: 2.75rem;
+  }
+  button {
+    margin-top: 0.5rem;
+    width: fit-content;
+    padding: 0.75rem 1rem;
+    font-size: 1.75rem;
+    background: $primary-color;
+    color: $secondary-color;
+    border: none;
+    &:hover {
+      cursor: pointer;
+      background: $accent-color;
+      color: $primary-color;
+    }
+  }
+}
+
+nav {
+  width: 100vw;
+  padding: 2rem 0;
+
+  ul {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  li {
+    list-style: none;
+  }
 }

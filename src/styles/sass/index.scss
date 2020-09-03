@@ -11,6 +11,11 @@ $accent-color: #95bf47;
   font-family: "Montserrat", sans-serif;
 }
 
+a {
+  text-decoration: none;
+  color: $primary-color;
+}
+
 // Utilities
 .container {
   max-width: 1280px;
@@ -47,7 +52,7 @@ header {
   p {
     font-size: 2.75rem;
   }
-  button {
+  .navToSearch {
     margin-top: 0.5rem;
     width: fit-content;
     padding: 0.75rem 1rem;
@@ -55,6 +60,7 @@ header {
     background: $primary-color;
     color: $secondary-color;
     border: none;
+    text-decoration: none;
     &:hover {
       cursor: pointer;
       background: $accent-color;

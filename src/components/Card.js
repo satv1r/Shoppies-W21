@@ -1,6 +1,6 @@
 import React from "react";
 
-const Card = ({ movie }) => {
+const Card = ({ movie, addNomination }) => {
   return (
     <li className="card" key={movie.id}>
       <div className="image">
@@ -10,12 +10,23 @@ const Card = ({ movie }) => {
         />
       </div>
       <div className="info">
-        <h3>{movie.title}</h3>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis ea quos
-          itaque aspernatur deserunt tenetur cumque optio, voluptatem voluptatum
-          quo.
-        </p>
+        <div className="text">
+          <h3>{movie.title}</h3>
+          <p>
+            <strong>Year: </strong>
+            {movie.release_date.split("-")[0]}
+          </p>
+        </div>
+        <div className="actions">
+          <button>More Info</button>
+          <button
+            onClick={() => {
+              addNomination(movie);
+            }}
+          >
+            Nominate
+          </button>
+        </div>
       </div>
     </li>
   );

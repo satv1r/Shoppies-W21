@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 function App() {
   const [movies, setMovies] = useState([]);
   const [input, setInput] = useState("");
+  const [nominations, setNominations] = useState([]);
 
   const fetchMovies = async () => {
     const res = await fetch(
@@ -22,6 +23,22 @@ function App() {
 
   const onChange = (e) => {
     setInput(e.target.value);
+  };
+
+  const addNomination = (movie) => {
+    let newNominations = nominations;
+    newNominations.push(movie);
+    setNominations(newNominations);
+  };
+
+  const removeNomination = (movie) => {
+    let newNominations = nominations.filter((currentMovie) => {
+      if (currentMovie === movie) {
+        return false;
+      }
+      return true;
+    });
+    setNominations(newNominations);
   };
 
   return (
@@ -45,6 +62,8 @@ function App() {
             <Search
               onSubmit={onSubmit}
               onChange={onChange}
+              addNomination={addNomination}
+              removeNomination={removeNomination}
               input={input}
               movies={movies}
             />

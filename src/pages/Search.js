@@ -1,7 +1,14 @@
 import React from "react";
 import Results from "../components/Results";
 
-const Search = ({ onSubmit, onChange, input, movies }) => {
+const Search = ({
+  onSubmit,
+  onChange,
+  input,
+  movies,
+  addNomination,
+  removeNomination,
+}) => {
   return (
     <div className="container searchPage">
       <form className="searchForm" onSubmit={onSubmit}>
@@ -16,7 +23,7 @@ const Search = ({ onSubmit, onChange, input, movies }) => {
         />
         <button>Search</button>
       </form>
-      <Results query={input} movies={movies} />
+      <Results query={input} movies={movies} addNomination={addNomination} />
     </div>
   );
 };

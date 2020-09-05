@@ -26,19 +26,13 @@ function App() {
   };
 
   const addNomination = (movie) => {
-    let newNominations = nominations;
-    newNominations.push(movie);
-    setNominations(newNominations);
+    setNominations(() => [...nominations, movie]);
   };
 
   const removeNomination = (movie) => {
-    let newNominations = nominations.filter((currentMovie) => {
-      if (currentMovie === movie) {
-        return false;
-      }
-      return true;
-    });
-    setNominations(newNominations);
+    setNominations(
+      nominations.filter((currentMovie) => currentMovie === movie)
+    );
   };
 
   return (
@@ -64,6 +58,7 @@ function App() {
               onChange={onChange}
               addNomination={addNomination}
               removeNomination={removeNomination}
+              nominations={nominations}
               input={input}
               movies={movies}
             />

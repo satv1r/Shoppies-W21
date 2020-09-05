@@ -32,7 +32,13 @@ const Results = ({ query, movies, addNomination }) => {
       <div className="cards">
         <ul>
           {moviesToRender.map((movie) => {
-            return <Card movie={movie} addNomination={addNomination} />;
+            return (
+              <Card
+                movie={movie}
+                key={movie.id}
+                addNomination={addNomination}
+              />
+            );
           })}
         </ul>
         {movies.length > 0 && (

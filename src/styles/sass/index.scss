@@ -170,6 +170,7 @@ nav {
 }
 
 .results {
+  width: 65%;
   p {
     font-weight: 300;
     font-size: 1rem;
@@ -181,7 +182,7 @@ nav {
 }
 
 .cards {
-  width: 65%;
+  width: 100%;
   ul {
     width: 100%;
     display: flex;
@@ -248,4 +249,13 @@ nav {
       background: $accent-color;
     }
   }
+}
+
+.presentation {
+  display: flex;
+  justify-content: space-between;
+}
+
+.nominations {
+  width: 30%;
 }

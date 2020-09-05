@@ -8,6 +8,7 @@ const Search = ({
   movies,
   addNomination,
   removeNomination,
+  nominations,
 }) => {
   return (
     <div className="container searchPage">
@@ -23,7 +24,21 @@ const Search = ({
         />
         <button>Search</button>
       </form>
-      <Results query={input} movies={movies} addNomination={addNomination} />
+      <div className="presentation">
+        <Results query={input} movies={movies} addNomination={addNomination} />
+        <div className="nominations">
+          <h2>Nominations</h2>
+          <ul>
+            {nominations.map((movie) => {
+              return (
+                <li>
+                  <h3>{movie.title}</h3>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      </div>
     </div>
   );
 };

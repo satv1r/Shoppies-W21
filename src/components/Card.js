@@ -2,7 +2,7 @@ import React from "react";
 
 const Card = ({ movie, addNomination }) => {
   return (
-    <li className="card" key={movie.id}>
+    <li className="card">
       <div className="image">
         <img
           src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}

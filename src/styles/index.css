@@ -218,6 +218,10 @@ nav li {
   font-size: 1rem;
 }
 
+.results {
+  width: 65%;
+}
+
 .results p {
   font-weight: 300;
   font-size: 1rem;
@@ -228,7 +232,7 @@ nav li {
 }
 
 .cards {
-  width: 65%;
+  width: 100%;
 }
 
 .cards ul {
@@ -329,4 +333,17 @@ nav li {
   margin-top: 0.5rem;
   border: none;
   background: #95bf47;
+}
+
+.presentation {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.nominations {
+  width: 30%;
 }

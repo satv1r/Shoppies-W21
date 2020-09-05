@@ -31,8 +31,15 @@ const Search = ({
           <ul>
             {nominations.map((movie) => {
               return (
-                <li>
+                <li key={movie.id}>
                   <h3>{movie.title}</h3>
+                  <button
+                    onClick={() => {
+                      removeNomination(movie);
+                    }}
+                  >
+                    Remove Nomination
+                  </button>
                 </li>
               );
             })}

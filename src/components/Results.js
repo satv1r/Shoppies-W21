@@ -4,7 +4,6 @@ import Card from "./Card";
 const Results = ({ query, movies, addNomination }) => {
   const [page, setPage] = useState(0);
 
-  const total = movies.length;
   const moviesToRender = [];
 
   const prevPage = () => {

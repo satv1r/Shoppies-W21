@@ -8,6 +8,8 @@ function App() {
   const [input, setInput] = useState("");
   const [nominations, setNominations] = useState([]);
 
+  const throttle = (func, interval) => {};
+
   // fetch movies based on input
   const fetchMovies = async () => {
     const res = await fetch(

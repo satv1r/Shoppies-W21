@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Home from "./pages/Home";
 import Search from "./pages/Search";
+import View from "./pages/View";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 function App() {
@@ -8,15 +9,23 @@ function App() {
   const [input, setInput] = useState("");
   const [nominations, setNominations] = useState([]);
 
-  const throttle = (func, interval) => {};
-
   // fetch movies based on input
   const fetchMovies = async () => {
     const res = await fetch(
-      `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_KEY}&language=en-US&query=${input}&page=1&include_adult=false`
+      `http://www.omdbapi.com/?apikey=${process.env.REACT_APP_KEY}&s=${input}`
     );
     const body = await res.json();
-    setMovies(body.results);
+    console.log(body);
+    setMovies(body.Search);
+  };
+
+  // fetch movies based on ID
+  const fetchMovieByID = async (id) => {
+    const res = await fetch(
+      `http://www.omdbapi.com/?apikey=${process.env.REACT_APP_KEY}&i=${id}`
+    );
+    const body = await res.json();
+    return body;
   };
 
   // save nominations to localStorage
@@ -52,7 +61,7 @@ function App() {
     setInput(e.target.value);
   };
 
-  // Initial setup
+  // initial setup
   useEffect(() => {
     if (localStorage.getItem("nominations")) {
       setNominations(getNominations());
@@ -96,6 +105,12 @@ function App() {
               movies={movies}
             />
           </Route>
+          <Route
+            path="/view/:list"
+            render={({ match }) => (
+              <View match={match} fetchMovieByID={fetchMovieByID} />
+            )}
+          />
         </Switch>
       </header>
     </Router>

@@ -4,17 +4,14 @@ const Card = ({ movie, addNomination }) => {
   return (
     <li className="card">
       <div className="image">
-        <img
-          src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
-          alt={movie.title}
-        />
+        <img src={movie.Poster} alt={movie.Title} />
       </div>
       <div className="info">
         <div className="text">
-          <h3>{movie.title}</h3>
+          <h3>{movie.Title}</h3>
           <p>
             <strong>Year: </strong>
-            {movie.release_date.split("-")[0]}
+            {movie.Year}
           </p>
         </div>
         <div className="actions">

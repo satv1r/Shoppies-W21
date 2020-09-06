@@ -1,5 +1,6 @@
 import React from "react";
 import Results from "../components/Results";
+import { Link } from "react-router-dom";
 
 const Search = ({
   onSubmit,
@@ -10,6 +11,15 @@ const Search = ({
   removeNomination,
   nominations,
 }) => {
+  let link = "/view/";
+
+  nominations.forEach((movie) => {
+    console.log("moving");
+    link = link.concat(`${movie.imdbID}&`);
+  });
+
+  console.log(link);
+
   return (
     <div className="container searchPage">
       <form className="searchForm" onSubmit={onSubmit}>
@@ -31,8 +41,8 @@ const Search = ({
           <ul>
             {nominations.map((movie) => {
               return (
-                <li key={movie.id}>
-                  <h3>{movie.title}</h3>
+                <li key={movie.imdbID}>
+                  <h3>{movie.Title}</h3>
                   <button
                     onClick={() => {
                       removeNomination(movie);
@@ -44,6 +54,7 @@ const Search = ({
               );
             })}
           </ul>
+          <Link to={link}>Shareable Link!</Link>
         </div>
       </div>
     </div>

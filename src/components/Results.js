@@ -24,7 +24,7 @@ const Results = ({ query, movies, addNomination }) => {
       <h2>
         {movies.length > 0 && (
           <p>
-            Results for {query} <em>({movies.length})</em>
+            Results for '{query}' <em>({movies.length})</em>
           </p>
         )}
       </h2>
@@ -34,7 +34,7 @@ const Results = ({ query, movies, addNomination }) => {
             return (
               <Card
                 movie={movie}
-                key={movie.id}
+                key={movie.imdbID}
                 addNomination={addNomination}
               />
             );

@@ -231,6 +231,10 @@ nav li {
   font-weight: 500;
 }
 
+.results h2 {
+  text-align: center;
+}
+
 .cards {
   width: 100%;
 }

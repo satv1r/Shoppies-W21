@@ -23,7 +23,7 @@ const Results = ({ query, movies, addNomination, nominations }) => {
   const moviesToRender = [];
 
   // push current pages movies to render array
-  if (movies.length > 0) {
+  if (movies && movies.length > 0) {
     for (let i = page * 4; i < page * 4 + 4 && i < movies.length; i++) {
       moviesToRender.push(movies[i]);
     }
@@ -32,7 +32,7 @@ const Results = ({ query, movies, addNomination, nominations }) => {
   return (
     <div className="results">
       <h2>
-        {movies.length > 0 && (
+        {movies && movies.length > 0 && (
           <p>
             Results for '{query}' <em>({movies.length})</em>
           </p>
@@ -51,7 +51,7 @@ const Results = ({ query, movies, addNomination, nominations }) => {
             );
           })}
         </ul>
-        {movies.length > 0 && (
+        {movies && movies.length > 0 && (
           <div className="buttons">
             {page > 0 ? (
               <button onClick={prevPage}>Prev Page</button>

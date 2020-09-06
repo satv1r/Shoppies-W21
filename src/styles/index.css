@@ -201,21 +201,13 @@ nav li {
 
 .searchForm input {
   width: 70%;
-  background-color: #000639;
+  background-color: #f2e0cf;
   outline: none;
-  border: none;
-  color: #f2e0cf;
+  border: 2px solid #000639;
+  color: #000639;
   padding: 0.25rem 0.5rem;
   font-size: 1.25rem;
-}
-
-.searchForm button {
-  margin-left: 0.5rem;
-  padding: 0.5rem 0.75rem;
-  border: none;
-  background: #000639;
-  color: #f2e0cf;
-  font-size: 1rem;
+  font-weight: 300;
 }
 
 .results {

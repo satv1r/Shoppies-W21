@@ -34,7 +34,6 @@ const Search = ({
           value={input}
           required
         />
-        <button>Search</button>
       </form>
       <div className="presentation">
         <Results

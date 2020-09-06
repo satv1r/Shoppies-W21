@@ -76,6 +76,7 @@ function App() {
     saveNominations(nominations);
   }, [nominations]);
 
+  // https://typeofnan.dev/debouncing-with-react-hooks/
   useEffect(() => {
     if (input !== "") {
       const request = setTimeout(() => {

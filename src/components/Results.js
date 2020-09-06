@@ -1,24 +1,34 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Card from "./Card";
 
-const Results = ({ query, movies, addNomination }) => {
+const Results = ({ query, movies, addNomination, nominations }) => {
+  // create page state to keep track of pagination
   const [page, setPage] = useState(0);
 
-  const moviesToRender = [];
-
+  // decrement page
   const prevPage = () => {
     setPage(page - 1);
   };
 
+  // increment page
   const nextPage = () => {
     setPage(page + 1);
   };
 
+  // reset page to 0 when new movies are loaded
+  useEffect(() => {
+    setPage(0);
+  }, [movies]);
+
+  const moviesToRender = [];
+
+  // push current pages movies to render array
   if (movies.length > 0) {
     for (let i = page * 4; i < page * 4 + 4 && i < movies.length; i++) {
       moviesToRender.push(movies[i]);
     }
   }
+
   return (
     <div className="results">
       <h2>
@@ -36,6 +46,7 @@ const Results = ({ query, movies, addNomination }) => {
                 movie={movie}
                 key={movie.imdbID}
                 addNomination={addNomination}
+                nominations={nominations}
               />
             );
           })}

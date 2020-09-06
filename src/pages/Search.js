@@ -11,14 +11,15 @@ const Search = ({
   removeNomination,
   nominations,
 }) => {
-  let link = "/view/";
+  const copyToClipboard = async (text) => {
+    await navigator.clipboard.writeText(text);
+  };
+
+  let link = "127.0.0.1:3000/view/";
 
   nominations.forEach((movie) => {
-    console.log("moving");
     link = link.concat(`${movie.imdbID}&`);
   });
-
-  console.log(link);
 
   return (
     <div className="container searchPage">
@@ -28,6 +29,7 @@ const Search = ({
           type="text"
           name="search"
           id="search"
+          placeholder="Toy Story 4"
           onChange={onChange}
           value={input}
           required
@@ -35,7 +37,12 @@ const Search = ({
         <button>Search</button>
       </form>
       <div className="presentation">
-        <Results query={input} movies={movies} addNomination={addNomination} />
+        <Results
+          query={input}
+          movies={movies}
+          addNomination={addNomination}
+          nominations={nominations}
+        />
         <div className="nominations">
           <h2>Nominations</h2>
           <ul>
@@ -54,7 +61,13 @@ const Search = ({
               );
             })}
           </ul>
-          <Link to={link}>Shareable Link!</Link>
+          <button
+            onClick={() => {
+              copyToClipboard(link);
+            }}
+          >
+            Generate Shareable Link!
+          </button>
         </div>
       </div>
     </div>

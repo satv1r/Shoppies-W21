@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Home from "./pages/Home";
 import Search from "./pages/Search";
 import View from "./pages/View";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import _ from "lodash";
 
 function App() {
   const [movies, setMovies] = useState([]);
@@ -14,6 +15,10 @@ function App() {
     const res = await fetch(
       `http://www.omdbapi.com/?apikey=${process.env.REACT_APP_KEY}&s=${input}`
     );
+    console.log(
+      `making request to: http://www.omdbapi.com/?apikey=${process.env.REACT_APP_KEY}&s=${input}`
+    );
+    console.log("value of input inside fetchMovies is: ", input);
     const body = await res.json();
     console.log(body);
     setMovies(body.Search);
@@ -73,9 +78,25 @@ function App() {
 
   // save nominations on state change
   useEffect(() => {
-    console.log("nominations changed");
     saveNominations(nominations);
   }, [nominations]);
+
+  //make debounced fetch movies on input change
+  // useEffect(() => {
+  //   if (input !== "") {
+  //     console.log("running now, value is: ", input);
+
+  //     fetchMoviesThrottled();
+  //   }
+  // }, [input]);
+
+  useEffect(() => {
+    console.log("doing this!");
+    const request = setTimeout(() => {
+      fetchMovies();
+    }, 1000);
+    return clearTimeout(request);
+  }, [input]);
 
   return (
     <Router>

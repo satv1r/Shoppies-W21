@@ -97,7 +97,7 @@ header .content {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  height: calc(100vh - 6rem);
+  height: calc(100vh - 12rem);
 }
 
 header .left,
@@ -112,8 +112,6 @@ header .right {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  -webkit-transform: translate(0, -10%);
-          transform: translate(0, -10%);
 }
 
 header .left {
@@ -277,6 +275,15 @@ nav li {
   font-weight: 300;
 }
 
+.presentation {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
 .results,
 .message {
   width: 65%;
@@ -293,11 +300,6 @@ nav li {
       -ms-flex-align: center;
           align-items: center;
   text-align: center;
-}
-
-.results p {
-  font-weight: 300;
-  font-size: 1rem;
 }
 
 .results p strong {
@@ -339,8 +341,6 @@ nav li {
 }
 
 .cards .buttons p {
-  font-weight: 300;
-  font-size: 1rem;
   margin: 0 2rem;
 }
 
@@ -357,14 +357,13 @@ nav li {
 
 .card .image {
   width: 35%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
 }
 
 .card img {
   width: 100%;
-  max-height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 100%;
 }
 
 .card .info {
@@ -395,15 +394,6 @@ nav li {
 .card .actions button {
   width: 60%;
   margin-top: 0.5rem;
-}
-
-.presentation {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
 }
 
 .nominations {

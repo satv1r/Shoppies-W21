@@ -98,10 +98,11 @@ header {
   width: 100vw;
   min-height: 100vh;
   height: 100%;
+
   .content {
     display: flex;
     justify-content: space-between;
-    height: calc(100vh - 6rem);
+    height: calc(100vh - 12rem);
   }
 
   .left,
@@ -109,7 +110,6 @@ header {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    transform: translate(0, -10%);
   }
 
   .left {
@@ -131,6 +131,7 @@ nav {
   }
 }
 
+// Home Page
 .heading {
   margin-bottom: 0.25rem;
 }
@@ -207,6 +208,8 @@ nav {
   }
 }
 
+// Search Page
+
 .searchForm {
   margin: 2rem auto;
   width: 40%;
@@ -233,6 +236,11 @@ nav {
   }
 }
 
+.presentation {
+  display: flex;
+  justify-content: space-between;
+}
+
 .results,
 .message {
   width: 65%;
@@ -246,11 +254,6 @@ nav {
 }
 
 .results {
-  p {
-    font-weight: 300;
-    font-size: 1rem;
-  }
-
   p strong {
     font-weight: 500;
   }
@@ -276,8 +279,6 @@ nav {
     align-items: center;
 
     p {
-      font-weight: 300;
-      font-size: 1rem;
       margin: 0 2rem;
     }
   }
@@ -291,12 +292,12 @@ nav {
 
   .image {
     width: 35%;
-    display: flex;
   }
 
   img {
     width: 100%;
-    max-height: 100%;
+    object-fit: cover;
+    height: 100%;
   }
   .info {
     width: 60%;
@@ -316,11 +317,6 @@ nav {
       margin-top: 0.5rem;
     }
   }
-}
-
-.presentation {
-  display: flex;
-  justify-content: space-between;
 }
 
 .nominations {

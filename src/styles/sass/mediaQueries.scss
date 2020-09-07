@@ -9,20 +9,13 @@
       @content;
     }
   }
-  @if $breakpoint == mDPI {
+  @if $breakpoint == smallLaptop {
     @media (min-width: 1000px) {
       @content;
     }
   }
-
-  @if $breakpoint == hDPI {
+  @if $breakpoint == laptop {
     @media (min-width: 1280px) {
-      @content;
-    }
-  }
-
-  @if $breakpoint == vhDPI {
-    @media (min-width: 1440px) {
       @content;
     }
   }

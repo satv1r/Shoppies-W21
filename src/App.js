@@ -115,6 +115,7 @@ function App() {
       setMovies(undefined);
       setLoading(false);
     }
+    // eslint-disable-next-line
   }, [input]);
 
   const triggerAlert = (msg) => {

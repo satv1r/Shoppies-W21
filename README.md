@@ -6,7 +6,7 @@
 
 This was accomplished with the use of the browsers LocalStorage API. Upon every change in nominations (addition or removal of movies) a new array is stringified and added to local storage. When the user visit's the app, the app will always look for existing nominations data in LocalStorage, if it doesn't exist, it'll create a new entry.
 
-### Shareable Links
+### Shareable links
 
 In order to implement this feature, I first create a specific route called '/view', then what I did was concatenate the id's of the movies at the end of this url, using the '&' symbol as a seperator. When the user visits the '/view' route, the app will read the URL, extract the ID's into an array and query the API to get the title of each of the movies.
 
@@ -17,6 +17,10 @@ Since I wanted the app to be as quick as possible, I decided that it would be id
 ### Pagination
 
 I implemented pagination to view the results as there are often many results per search term.
+
+### Gallery
+
+This was something that I implemented while I got bored, I created this css gallery of images for the home route. When you hover over the movie posters, they animate.
 
 ## Setup
 

@@ -1,3 +1,30 @@
+## Hey! Welcome to my application: The Shoppies
+
+## Notable Features
+
+### Retaining a user's nominations
+
+This was accomplished with the use of the browsers LocalStorage API. Upon every change in nominations (addition or removal of movies) a new array is stringified and added to local storage. When the user visit's the app, the app will always look for existing nominations data in LocalStorage, if it doesn't exist, it'll create a new entry.
+
+### Shareable Links
+
+In order to implement this feature, I first create a specific route called '/view', then what I did was concatenate the id's of the movies at the end of this url, using the '&' symbol as a seperator. When the user visits the '/view' route, the app will read the URL, extract the ID's into an array and query the API to get the title of each of the movies.
+
+### Debouncing
+
+Since I wanted the app to be as quick as possible, I decided that it would be ideal for movie info to be retrieved as the user types into the input. This however leads to potential issues with making too many unnecessary API calls, so I implemented debouncing, this ensures the app only makes an API call once the user has stopped typing for a complete second.
+
+### Pagination
+
+I implemented pagination to view the results as there are often many results per search term.
+
+## Setup
+
+Create a .env file in the directory and assign the following to variables
+
+1. REACT_APP_KEY: Supply your own OMDB api key here
+2. REACT_APP_LINK: Supply the url of the app + '/view/' (example: 127.0.0.1:3000/view/)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

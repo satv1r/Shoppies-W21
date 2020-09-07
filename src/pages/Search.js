@@ -23,6 +23,7 @@ const Search = ({
   };
 
   let link = process.env.REACT_APP_LINK;
+  console.log(link);
 
   nominations.forEach((movie) => {
     link = link.concat(`${movie.imdbID}&`);

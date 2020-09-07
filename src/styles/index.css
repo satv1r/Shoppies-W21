@@ -6,14 +6,72 @@
   font-family: "Montserrat", sans-serif;
 }
 
-button {
-  padding: 0.5rem;
+.container {
+  max-width: 1440px;
+  width: 90%;
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: 4rem;
+}
+
+h2 {
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+h3 {
+  font-weight: 500;
+  font-size: 1.125rem;
+}
+
+p {
+  font-weight: 300;
   font-size: 1rem;
+}
+
+p.error {
+  color: #9b0404;
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+button {
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 500;
   border: none;
+  border-radius: 20px;
+  background: #95bf47;
 }
 
 button:hover {
   cursor: pointer;
+  background: #000639;
+  color: #f2e0cf;
+}
+
+button.danger {
+  background-color: #e16b6b;
+  color: #000639;
+}
+
+button.danger:hover {
+  cursor: pointer;
+  background: red;
+  color: #f2e0cf;
+}
+
+button.action {
+  background: #000639;
+  color: #f2e0cf;
+}
+
+button.action:hover {
+  cursor: pointer;
+  background: #95bf47;
+  color: #000639;
 }
 
 a {
@@ -25,15 +83,11 @@ li {
   list-style: none;
 }
 
-.container {
-  max-width: 1440px;
-  margin: 0 auto;
-}
-
 header {
   background: #f2e0cf;
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
+  height: 100%;
 }
 
 header .content {
@@ -43,7 +97,7 @@ header .content {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  height: calc(100% - 6rem);
+  height: calc(100vh - 6rem);
 }
 
 header .left,
@@ -66,34 +120,6 @@ header .left {
   width: 60%;
 }
 
-header h1 {
-  font-size: 4rem;
-  font-weight: 700;
-}
-
-header p {
-  font-size: 2.75rem;
-}
-
-header .navToSearch {
-  margin-top: 0.5rem;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  padding: 0.75rem 1rem;
-  font-size: 1.75rem;
-  background: #000639;
-  color: #f2e0cf;
-  border: none;
-  text-decoration: none;
-}
-
-header .navToSearch:hover {
-  cursor: pointer;
-  background: #95bf47;
-  color: #000639;
-}
-
 nav {
   width: 100vw;
   padding: 2rem 0;
@@ -110,6 +136,34 @@ nav ul {
 
 nav li {
   list-style: none;
+}
+
+.heading {
+  margin-bottom: 0.25rem;
+}
+
+.subHeading {
+  font-size: 2.75rem;
+}
+
+.navToSearch {
+  margin-top: 1.5rem;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 0.75rem 1rem;
+  font-size: 1.75rem;
+  border-radius: 50px;
+  background: #000639;
+  color: #f2e0cf;
+  border: none;
+  text-decoration: none;
+}
+
+.navToSearch:hover {
+  cursor: pointer;
+  background: #95bf47;
+  color: #000639;
 }
 
 .gallery {
@@ -205,8 +259,11 @@ nav li {
 .searchForm label {
   text-align: center;
   width: 100%;
-  font-size: 1.5rem;
   margin-bottom: 0.75rem;
+}
+
+.searchForm h1 {
+  font-size: 2rem;
 }
 
 .searchForm input {
@@ -221,11 +278,11 @@ nav li {
 }
 
 .results,
-.resultsMessage {
+.message {
   width: 65%;
 }
 
-.resultsMessage {
+.message {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -287,10 +344,6 @@ nav li {
   margin: 0 2rem;
 }
 
-.cards .buttons button {
-  background-color: #95bf47;
-}
-
 .card {
   width: 45%;
   display: -webkit-box;
@@ -300,11 +353,6 @@ nav li {
       -ms-flex-pack: justify;
           justify-content: space-between;
   margin-bottom: 1.25rem;
-}
-
-.card h3 {
-  font-weight: 700;
-  font-size: 1.125rem;
 }
 
 .card .image {
@@ -347,7 +395,6 @@ nav li {
 .card .actions button {
   width: 60%;
   margin-top: 0.5rem;
-  background: #95bf47;
 }
 
 .presentation {
@@ -361,4 +408,17 @@ nav li {
 
 .nominations {
   width: 30%;
+  text-align: center;
+}
+
+.nominations h3 {
+  margin-bottom: 0.25rem;
+}
+
+.nominations li {
+  margin-bottom: 1.5rem;
+}
+
+.nominations ul {
+  margin: 2.5rem 0 1rem 0;
 }

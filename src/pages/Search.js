@@ -26,7 +26,9 @@ const Search = ({
   return (
     <div className="container searchPage">
       <form className="searchForm" onSubmit={onSubmit}>
-        <label htmlFor="search">Search for movies to nominate</label>
+        <label htmlFor="search">
+          <h1>Search for movies to nominate</h1>
+        </label>
         <input
           type="text"
           name="search"
@@ -39,7 +41,7 @@ const Search = ({
       </form>
       <div className="presentation">
         {(loading || movies === undefined) && (
-          <Message loading={loading} tooMany={tooMany} />
+          <Message loading={loading} tooMany={tooMany} input={input} />
         )}
         {!loading && movies !== undefined && (
           <Results
@@ -59,6 +61,7 @@ const Search = ({
                 <li key={movie.imdbID}>
                   <h3>{movie.Title}</h3>
                   <button
+                    className="danger"
                     onClick={() => {
                       removeNomination(movie);
                     }}
@@ -69,13 +72,19 @@ const Search = ({
               );
             })}
           </ul>
-          <button
-            onClick={() => {
-              copyToClipboard(link);
-            }}
-          >
-            Generate Shareable Link!
-          </button>
+          {nominations.length > 0 && (
+            <button
+              className="action"
+              onClick={() => {
+                copyToClipboard(link);
+              }}
+            >
+              Generate Shareable Link!
+            </button>
+          )}
+          {nominations.length <= 0 && (
+            <p className="error">Please nominate up to 5 movies!</p>
+          )}
         </div>
       </div>
     </div>

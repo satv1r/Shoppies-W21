@@ -33,9 +33,9 @@ const Results = ({ query, movies, addNomination, nominations, loading }) => {
     <div className="results">
       <h2>
         {movies && movies.length > 0 && (
-          <p>
-            Results for '{query}' <em>({movies.length})</em>
-          </p>
+          <h2>
+            Results for <em>'{query}'</em> ({movies.length})
+          </h2>
         )}
       </h2>
       {loading && <i className="fas fa-spinner fa-spin"></i>}

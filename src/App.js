@@ -120,7 +120,9 @@ function App() {
           </div>
         </nav>
         <Switch>
-          <Route exact path="/" component={Home} />
+          <Route exact path="/">
+            <Home nominations={nominations} />
+          </Route>
           <Route path="/search">
             <Search
               onSubmit={onSubmit}

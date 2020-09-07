@@ -1,0 +1,29 @@
+@mixin mq($breakpoint) {
+  @if $breakpoint == iPhone {
+    @media (min-width: 375px) {
+      @content;
+    }
+  }
+  @if $breakpoint == iPad {
+    @media (min-width: 768px) {
+      @content;
+    }
+  }
+  @if $breakpoint == mDPI {
+    @media (min-width: 1000px) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == hDPI {
+    @media (min-width: 1280px) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == vhDPI {
+    @media (min-width: 1440px) {
+      @content;
+    }
+  }
+}

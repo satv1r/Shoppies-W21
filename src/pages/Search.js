@@ -13,9 +13,13 @@ const Search = ({
   loading,
   tooMany,
   viewNominations,
+  alertMessage,
+  showAlert,
+  triggerAlert,
 }) => {
   const copyToClipboard = async (text) => {
     await navigator.clipboard.writeText(text);
+    triggerAlert("Copied Link to Clipboard!");
   };
 
   let link = "127.0.0.1:3000/view/";
@@ -41,6 +45,11 @@ const Search = ({
             required
           />
         </form>
+        {showAlert && (
+          <div className="alert">
+            <p>{alertMessage}</p>
+          </div>
+        )}
         <div className="presentation">
           {(loading || movies === undefined) && (
             <Message loading={loading} tooMany={tooMany} input={input} />
@@ -96,6 +105,11 @@ const Search = ({
       <div className="container searchPage">
         <div className="nominations mobile">
           <h2>Nominations</h2>
+          {showAlert && (
+            <div className="alert">
+              <p>{alertMessage}</p>
+            </div>
+          )}
           <ul>
             {nominations.map((movie) => {
               return (

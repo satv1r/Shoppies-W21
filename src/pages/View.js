@@ -14,13 +14,15 @@ const View = ({ match, fetchMovieByID }) => {
   }, [match, fetchMovieByID]);
 
   return (
-    <div>
+    <div className="view">
       <h1>Movies your friend nominated.</h1>
       <ul>
-        {nominations.map((movie) => {
+        {nominations.map((movie, index) => {
           return (
             <li key={movie.imdbID}>
-              <h3>{movie.Title}</h3>
+              <h3>
+                {index + 1}. {movie.Title}
+              </h3>
             </li>
           );
         })}

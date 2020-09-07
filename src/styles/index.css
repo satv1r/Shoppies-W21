@@ -630,3 +630,28 @@ nav .plug {
     display: none;
   }
 }
+
+.alert {
+  background: #95bf47;
+  padding: 0.5rem 1rem;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 0 auto;
+  margin-bottom: 2rem;
+  color: #000639;
+  border-radius: 50px;
+}
+
+.alert p {
+  font-size: 1.5rem;
+}
+
+.view {
+  margin-top: 2rem;
+}
+
+.view h1,
+.view li {
+  text-align: center;
+}

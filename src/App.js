@@ -11,6 +11,8 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [tooMany, setTooMany] = useState(false);
   const [viewNominations, setViewNominations] = useState(false);
+  const [alertMessage, setAlertMessage] = useState("");
+  const [showAlert, setShowAlert] = useState(false);
 
   // fetch movies based on input
   const fetchMovies = async () => {
@@ -55,6 +57,10 @@ function App() {
   // add movie to nominations
   const addNomination = (movie) => {
     setNominations(() => [...nominations, movie]);
+    triggerAlert(`Added ${movie.Title}`);
+    if (nominations.length >= 4) {
+      triggerAlert("You have nominated 5 movies");
+    }
   };
 
   // remove movie from nominations
@@ -62,6 +68,7 @@ function App() {
     setNominations(
       nominations.filter((currentMovie) => currentMovie !== movie)
     );
+    triggerAlert(`Removed ${movie.Title}`);
   };
 
   // fetch movies on submit
@@ -97,6 +104,7 @@ function App() {
   // https://typeofnan.dev/debouncing-with-react-hooks/
   useEffect(() => {
     setTooMany(false);
+    setShowAlert(false);
     if (input !== "") {
       const request = setTimeout(() => {
         fetchMovies();
@@ -109,14 +117,26 @@ function App() {
     }
   }, [input]);
 
+  const triggerAlert = (msg) => {
+    setAlertMessage(msg);
+    setShowAlert(true);
+    setTimeout(() => {
+      setShowAlert(false);
+    }, 3000);
+  };
+
   return (
     <Router>
       <header>
         <nav>
           <div className="container">
-            <button className="mobileSwitcher" onClick={toggleViewNominations}>
-              {viewNominations && <i class="fas fa-trophy"></i>}
-              {!viewNominations && <i class="fas fa-search"></i>}
+            <button
+              className="mobileSwitcher"
+              onClick={toggleViewNominations}
+              aria-label="switch between search and nominations pages"
+            >
+              {viewNominations && <i className="fas fa-trophy"></i>}
+              {!viewNominations && <i className="fas fa-search"></i>}
             </button>
             <ul>
               <li className="logo">
@@ -146,6 +166,9 @@ function App() {
               loading={loading}
               tooMany={tooMany}
               viewNominations={viewNominations}
+              alertMessage={alertMessage}
+              showAlert={showAlert}
+              triggerAlert={triggerAlert}
             />
           </Route>
           <Route

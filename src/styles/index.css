@@ -7,18 +7,52 @@
 }
 
 .container {
-  max-width: 1440px;
+  max-width: 320px;
   width: 90%;
   margin: 0 auto;
 }
 
+@media (min-width: 768px) {
+  .container {
+    max-width: 720px;
+  }
+}
+
+@media (min-width: 1000px) {
+  .container {
+    max-width: 1000px;
+  }
+}
+
 h1 {
   font-size: 4rem;
+  font-size: 2.25rem;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  h1 {
+    font-size: 3.5rem;
+  }
+}
+
+@media (min-width: 1000px) {
+  h1 {
+    font-size: 4rem;
+    text-align: left;
+  }
 }
 
 h2 {
   font-weight: 700;
   font-size: 1.5rem;
+  font-size: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  h2 {
+    font-size: 1.5rem;
+  }
 }
 
 h3 {
@@ -29,6 +63,13 @@ h3 {
 p {
   font-weight: 300;
   font-size: 1rem;
+  text-align: center;
+}
+
+@media (min-width: 1000px) {
+  p {
+    text-align: left;
+  }
 }
 
 p.error {
@@ -87,7 +128,14 @@ header {
   background: #f2e0cf;
   width: 100vw;
   min-height: 100vh;
-  height: 100%;
+}
+
+@media not all and (min-resolution: 0.001dpcm) {
+  @supports (-webkit-appearance: none) and (stroke-color: transparent) {
+    header {
+      min-height: -webkit-fill-available;
+    }
+  }
 }
 
 header .content {
@@ -115,7 +163,13 @@ header .right {
 }
 
 header .left {
-  width: 60%;
+  width: 100%;
+}
+
+@media (min-width: 1000px) {
+  header .left {
+    width: 60%;
+  }
 }
 
 nav {
@@ -127,13 +181,31 @@ nav ul {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+@media (min-width: 1000px) {
+  nav ul {
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
 }
 
 nav li {
   list-style: none;
+}
+
+nav .plug {
+  display: none;
+}
+
+@media (min-width: 1000px) {
+  nav .plug {
+    display: block;
+  }
 }
 
 .heading {
@@ -142,20 +214,44 @@ nav li {
 
 .subHeading {
   font-size: 2.75rem;
+  font-size: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .subHeading {
+    font-size: 2rem;
+  }
 }
 
 .navToSearch {
-  margin-top: 1.5rem;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  padding: 0.75rem 1rem;
+  padding: 0.5rem 0.75rem;
   font-size: 1.75rem;
+  font-size: 1rem;
   border-radius: 50px;
+  border-radius: 20px;
   background: #000639;
   color: #f2e0cf;
   border: none;
   text-decoration: none;
+  margin: 0 auto;
+  margin-top: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .navToSearch {
+    padding: 0.75rem 1rem;
+    font-size: 1.5rem;
+    border-radius: 40px;
+  }
+}
+
+@media (min-width: 1000px) {
+  .navToSearch {
+    margin: 1.5rem 0 0 0;
+  }
 }
 
 .navToSearch:hover {
@@ -176,6 +272,7 @@ nav li {
       -ms-flex-align: center;
           align-items: center;
   width: 320px;
+  display: none;
 }
 
 .gallery .poster {
@@ -241,9 +338,50 @@ nav li {
           transform: translate3d(30%, -40%, 0) skew(-5deg, 12deg);
 }
 
+@media (min-width: 1000px) {
+  .gallery {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+
+@media (min-width: 768px) {
+  .searchPage {
+    height: calc(100vh - 83px);
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-transform: translateY(-83px);
+            transform: translateY(-83px);
+  }
+}
+
+@media (min-width: 1000px) {
+  .searchPage {
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+  }
+}
+
 .searchForm {
   margin: 2rem auto;
+  margin: 0 0 2rem 0;
   width: 40%;
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -261,11 +399,18 @@ nav li {
 }
 
 .searchForm h1 {
-  font-size: 2rem;
+  font-size: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .searchForm h1 {
+    text-align: center;
+    font-size: 1.5rem;
+  }
 }
 
 .searchForm input {
-  width: 70%;
+  width: 100%;
   background-color: #f2e0cf;
   outline: none;
   border: 2px solid #000639;
@@ -273,6 +418,13 @@ nav li {
   padding: 0.25rem 0.5rem;
   font-size: 1.25rem;
   font-weight: 300;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .searchForm input {
+    width: 50%;
+  }
 }
 
 .presentation {
@@ -286,7 +438,14 @@ nav li {
 
 .results,
 .message {
-  width: 65%;
+  width: 100%;
+}
+
+@media (min-width: 1000px) {
+  .results,
+  .message {
+    width: 65%;
+  }
 }
 
 .message {
@@ -324,7 +483,7 @@ nav li {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  margin: 2.5rem 0;
+  margin: 2rem 0 1rem 0;
 }
 
 .cards .buttons {
@@ -338,6 +497,7 @@ nav li {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  margin-bottom: 2rem;
 }
 
 .cards .buttons p {
@@ -345,7 +505,7 @@ nav li {
 }
 
 .card {
-  width: 45%;
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -353,6 +513,16 @@ nav li {
       -ms-flex-pack: justify;
           justify-content: space-between;
   margin-bottom: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .card {
+    width: 45%;
+  }
+}
+
+.card p {
+  text-align: left;
 }
 
 .card .image {
@@ -399,6 +569,7 @@ nav li {
 .nominations {
   width: 30%;
   text-align: center;
+  display: none;
 }
 
 .nominations h3 {
@@ -411,4 +582,51 @@ nav li {
 
 .nominations ul {
   margin: 2.5rem 0 1rem 0;
+}
+
+@media (min-width: 1000px) {
+  .nominations {
+    display: block;
+  }
+  .nominations p {
+    text-align: center;
+  }
+}
+
+.nominations.mobile {
+  display: block;
+  width: 100%;
+}
+
+.mobileSwitcher {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: #000639;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #f2e0cf;
+}
+
+@media (min-width: 768px) {
+  .mobileSwitcher {
+    width: 3rem;
+    height: 3rem;
+  }
+}
+
+@media (min-width: 1000px) {
+  .mobileSwitcher {
+    display: none;
+  }
 }

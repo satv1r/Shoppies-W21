@@ -16,20 +16,41 @@ $accent-color: #95bf47;
 
 // Utilities
 .container {
-  max-width: 1440px;
+  max-width: 320px;
   width: 90%;
   margin: 0 auto;
+  @include mq(iPad) {
+    max-width: 720px;
+  }
+  @include mq(smallLaptop) {
+    max-width: 1000px;
+  }
 }
 
 // General Styles
 
 h1 {
   font-size: 4rem;
+  font-size: 2.25rem;
+  text-align: center;
+
+  @include mq(iPad) {
+    font-size: 3.5rem;
+  }
+
+  @include mq(smallLaptop) {
+    font-size: 4rem;
+    text-align: left;
+  }
 }
 
 h2 {
   font-weight: 700;
   font-size: 1.5rem;
+  font-size: 1.25rem;
+  @include mq(iPad) {
+    font-size: 1.5rem;
+  }
 }
 
 h3 {
@@ -40,6 +61,10 @@ h3 {
 p {
   font-weight: 300;
   font-size: 1rem;
+  text-align: center;
+  @include mq(smallLaptop) {
+    text-align: left;
+  }
 }
 
 p.error {
@@ -97,7 +122,12 @@ header {
   background: $secondary-color;
   width: 100vw;
   min-height: 100vh;
-  height: 100%;
+
+  @media not all and (min-resolution: 0.001dpcm) {
+    @supports (-webkit-appearance: none) and (stroke-color: transparent) {
+      min-height: -webkit-fill-available;
+    }
+  }
 
   .content {
     display: flex;
@@ -113,7 +143,10 @@ header {
   }
 
   .left {
-    width: 60%;
+    width: 100%;
+    @include mq(smallLaptop) {
+      width: 60%;
+    }
   }
 }
 
@@ -123,11 +156,22 @@ nav {
 
   ul {
     display: flex;
-    justify-content: space-between;
+
+    justify-content: center;
+    @include mq(smallLaptop) {
+      justify-content: space-between;
+    }
   }
 
   li {
     list-style: none;
+  }
+
+  .plug {
+    display: none;
+    @include mq(smallLaptop) {
+      display: block;
+    }
   }
 }
 
@@ -138,18 +182,37 @@ nav {
 
 .subHeading {
   font-size: 2.75rem;
+  font-size: 1.5rem;
+  @include mq(iPad) {
+    font-size: 2rem;
+  }
 }
 
 .navToSearch {
-  margin-top: 1.5rem;
   width: fit-content;
-  padding: 0.75rem 1rem;
+
+  padding: 0.5rem 0.75rem;
   font-size: 1.75rem;
+  font-size: 1rem;
   border-radius: 50px;
+  border-radius: 20px;
   background: $primary-color;
   color: $secondary-color;
   border: none;
   text-decoration: none;
+  margin: 0 auto;
+  margin-top: 1.5rem;
+
+  @include mq(iPad) {
+    padding: 0.75rem 1rem;
+    font-size: 1.5rem;
+    border-radius: 40px;
+  }
+
+  @include mq(smallLaptop) {
+    margin: 1.5rem 0 0 0;
+  }
+
   &:hover {
     cursor: pointer;
     background: $accent-color;
@@ -206,13 +269,37 @@ nav {
       transform: translate3d(30%, -40%, 0) skew(-5deg, 12deg);
     }
   }
+
+  // not visible in mobile
+  display: none;
+
+  @include mq(smallLaptop) {
+    display: flex;
+  }
 }
 
 // Search Page
+.searchPage {
+  @include mq(iPad) {
+    height: calc(100vh - 83px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transform: translateY(-83px);
+  }
+
+  @include mq(smallLaptop) {
+    justify-content: flex-start;
+    transform: translateY(0);
+    height: fit-content;
+  }
+}
 
 .searchForm {
   margin: 2rem auto;
+  margin: 0 0 2rem 0;
   width: 40%;
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -222,10 +309,14 @@ nav {
     margin-bottom: 0.75rem;
   }
   h1 {
-    font-size: 2rem;
+    font-size: 1.25rem;
+    @include mq(iPad) {
+      text-align: center;
+      font-size: 1.5rem;
+    }
   }
   input {
-    width: 70%;
+    width: 100%;
     background-color: $secondary-color;
     outline: none;
     border: 2px solid $primary-color;
@@ -233,6 +324,10 @@ nav {
     padding: 0.25rem 0.5rem;
     font-size: 1.25rem;
     font-weight: 300;
+    text-align: center;
+    @include mq(iPad) {
+      width: 50%;
+    }
   }
 }
 
@@ -243,7 +338,10 @@ nav {
 
 .results,
 .message {
-  width: 65%;
+  width: 100%;
+  @include mq(smallLaptop) {
+    width: 65%;
+  }
 }
 
 .message {
@@ -265,18 +363,20 @@ nav {
 
 .cards {
   width: 100%;
+
   ul {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    margin: 2.5rem 0;
+    margin: 2rem 0 1rem 0;
   }
   .buttons {
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 2rem;
 
     p {
       margin: 0 2rem;
@@ -285,10 +385,17 @@ nav {
 }
 
 .card {
-  width: 45%;
+  width: 100%;
+  @include mq(iPad) {
+    width: 45%;
+  }
   display: flex;
   justify-content: space-between;
   margin-bottom: 1.25rem;
+
+  p {
+    text-align: left;
+  }
 
   .image {
     width: 35%;
@@ -332,5 +439,43 @@ nav {
   }
   ul {
     margin: 2.5rem 0 1rem 0;
+  }
+
+  display: none;
+
+  @include mq(smallLaptop) {
+    display: block;
+
+    p {
+      text-align: center;
+    }
+  }
+}
+
+.nominations.mobile {
+  display: block;
+  width: 100%;
+}
+
+.mobileSwitcher {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: $primary-color;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $secondary-color;
+
+  @include mq(iPad) {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  @include mq(smallLaptop) {
+    display: none;
   }
 }

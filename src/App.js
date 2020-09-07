@@ -10,6 +10,7 @@ function App() {
   const [nominations, setNominations] = useState([]);
   const [loading, setLoading] = useState(false);
   const [tooMany, setTooMany] = useState(false);
+  const [viewNominations, setViewNominations] = useState(false);
 
   // fetch movies based on input
   const fetchMovies = async () => {
@@ -74,6 +75,10 @@ function App() {
     setInput(e.target.value);
   };
 
+  const toggleViewNominations = () => {
+    setViewNominations(!viewNominations);
+  };
+
   // initial setup
   useEffect(() => {
     if (localStorage.getItem("nominations")) {
@@ -109,11 +114,17 @@ function App() {
       <header>
         <nav>
           <div className="container">
+            <button className="mobileSwitcher" onClick={toggleViewNominations}>
+              {viewNominations && <i class="fas fa-trophy"></i>}
+              {!viewNominations && <i class="fas fa-search"></i>}
+            </button>
             <ul>
-              <li>
-                <Link to="/"> The Shoppies </Link>
+              <li className="logo">
+                <Link to="/">
+                  <strong>The Shoppies</strong>
+                </Link>
               </li>
-              <li>
+              <li className="plug">
                 built and designed by <strong>satvir sandhu</strong>
               </li>
             </ul>
@@ -134,6 +145,7 @@ function App() {
               movies={movies}
               loading={loading}
               tooMany={tooMany}
+              viewNominations={viewNominations}
             />
           </Route>
           <Route

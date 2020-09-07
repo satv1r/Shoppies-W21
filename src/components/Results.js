@@ -31,13 +31,12 @@ const Results = ({ query, movies, addNomination, nominations, loading }) => {
 
   return (
     <div className="results">
-      <h2>
-        {movies && movies.length > 0 && (
-          <h2>
-            Results for <em>'{query}'</em> ({movies.length})
-          </h2>
-        )}
-      </h2>
+      {movies && movies.length > 0 && (
+        <h2>
+          Results for <em>'{query}'</em> ({movies.length})
+        </h2>
+      )}
+
       {loading && <i className="fas fa-spinner fa-spin"></i>}
       {!loading && (
         <div className="cards">

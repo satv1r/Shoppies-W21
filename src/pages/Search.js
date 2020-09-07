@@ -22,7 +22,8 @@ const Search = ({
     triggerAlert("Copied Link to Clipboard!");
   };
 
-  let link = "127.0.0.1:3000/view/";
+  let link = JSON.stringify(process.env.REACT_APP_LINK);
+  console.log(process.env.REACT_APP_LINK);
 
   nominations.forEach((movie) => {
     link = link.concat(`${movie.imdbID}&`);

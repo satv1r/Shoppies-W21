@@ -35,7 +35,6 @@ const Card = ({ movie, addNomination, nominations }) => {
           </p>
         </div>
         <div className="actions">
-          <button>More Info</button>
           {disabled === false && (
             <button
               onClick={() => {

@@ -82,8 +82,18 @@ function App() {
     setInput(e.target.value);
   };
 
+  // toggle nominations view on mobile (search --> nominations || nominations --> search)
   const toggleViewNominations = () => {
     setViewNominations(!viewNominations);
+  };
+
+  // Trigger an alert
+  const triggerAlert = (msg) => {
+    setAlertMessage(msg);
+    setShowAlert(true);
+    setTimeout(() => {
+      setShowAlert(false);
+    }, 3000);
   };
 
   // initial setup
@@ -101,7 +111,8 @@ function App() {
     saveNominations(nominations);
   }, [nominations]);
 
-  // https://typeofnan.dev/debouncing-with-react-hooks/
+  // Credit to: https://typeofnan.dev/debouncing-with-react-hooks/
+  // This is a debouncing implementation using setTimeout, done to throttle API calls
   useEffect(() => {
     setTooMany(false);
     setShowAlert(false);
@@ -118,14 +129,6 @@ function App() {
     // eslint-disable-next-line
   }, [input]);
 
-  const triggerAlert = (msg) => {
-    setAlertMessage(msg);
-    setShowAlert(true);
-    setTimeout(() => {
-      setShowAlert(false);
-    }, 3000);
-  };
-
   return (
     <Router>
       <header>
@@ -136,6 +139,7 @@ function App() {
               onClick={toggleViewNominations}
               aria-label="switch between search and nominations pages"
             >
+              {/* Switch between nominations and search icon based on view */}
               {viewNominations && <i className="fas fa-trophy"></i>}
               {!viewNominations && <i className="fas fa-search"></i>}
             </button>
@@ -152,9 +156,11 @@ function App() {
           </div>
         </nav>
         <Switch>
+          {/* Home page */}
           <Route exact path="/">
             <Home nominations={nominations} />
           </Route>
+          {/* Search Page */}
           <Route path="/search">
             <Search
               onSubmit={onSubmit}
@@ -172,6 +178,7 @@ function App() {
               triggerAlert={triggerAlert}
             />
           </Route>
+          {/* Shareable Link Viewer */}
           <Route
             path="/view/:list"
             render={({ match }) => (

@@ -152,7 +152,10 @@ function App() {
                 </Link>
               </li>
               <li className="plug">
-                built and designed by <strong>satvir sandhu</strong>
+                built and designed by{" "}
+                <a href="https://www.satvir.ca/">
+                  <strong>satvir sandhu</strong>
+                </a>
               </li>
             </ul>
           </div>

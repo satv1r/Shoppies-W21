@@ -86,6 +86,10 @@ button {
     background: $primary-color;
     color: $secondary-color;
   }
+
+  &:disabled {
+    pointer-events: none;
+  }
 }
 
 button.danger {

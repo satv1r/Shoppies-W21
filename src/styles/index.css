@@ -93,6 +93,10 @@ button:hover {
   color: #f2e0cf;
 }
 
+button:disabled {
+  pointer-events: none;
+}
+
 button.danger {
   background-color: #e16b6b;
   color: #000639;

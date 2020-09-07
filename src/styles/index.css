@@ -6,6 +6,16 @@
   font-family: "Montserrat", sans-serif;
 }
 
+button {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: none;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
 a {
   text-decoration: none;
   color: #000639;
@@ -210,8 +220,22 @@ nav li {
   font-weight: 300;
 }
 
-.results {
+.results,
+.resultsMessage {
   width: 65%;
+}
+
+.resultsMessage {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
 }
 
 .results p {
@@ -264,10 +288,7 @@ nav li {
 }
 
 .cards .buttons button {
-  border: none;
   background-color: #95bf47;
-  padding: 0.5rem;
-  font-size: 1rem;
 }
 
 .card {
@@ -325,9 +346,7 @@ nav li {
 
 .card .actions button {
   width: 60%;
-  padding: 0.5rem;
   margin-top: 0.5rem;
-  border: none;
   background: #95bf47;
 }
 

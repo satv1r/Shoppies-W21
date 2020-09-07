@@ -11,7 +11,7 @@ const View = ({ match, fetchMovieByID }) => {
     let requests = list.map((id) => fetchMovieByID(id));
 
     Promise.all(requests).then((responses) => setNominations(responses));
-  }, []);
+  }, [match, fetchMovieByID]);
 
   return (
     <div>

@@ -1,6 +1,6 @@
 import React from "react";
 import Results from "../components/Results";
-import { Link } from "react-router-dom";
+import Message from "../components/Message";
 
 const Search = ({
   onSubmit,
@@ -10,6 +10,8 @@ const Search = ({
   addNomination,
   removeNomination,
   nominations,
+  loading,
+  tooMany,
 }) => {
   const copyToClipboard = async (text) => {
     await navigator.clipboard.writeText(text);
@@ -36,12 +38,19 @@ const Search = ({
         />
       </form>
       <div className="presentation">
-        <Results
-          query={input}
-          movies={movies}
-          addNomination={addNomination}
-          nominations={nominations}
-        />
+        {(loading || movies === undefined) && (
+          <Message loading={loading} tooMany={tooMany} />
+        )}
+        {!loading && movies !== undefined && (
+          <Results
+            query={input}
+            movies={movies}
+            addNomination={addNomination}
+            nominations={nominations}
+            loading={loading}
+          />
+        )}
+
         <div className="nominations">
           <h2>Nominations</h2>
           <ul>

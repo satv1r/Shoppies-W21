@@ -3,20 +3,33 @@ import Home from "./pages/Home";
 import Search from "./pages/Search";
 import View from "./pages/View";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import _ from "lodash";
 
 function App() {
   const [movies, setMovies] = useState([]);
   const [input, setInput] = useState("");
   const [nominations, setNominations] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [tooMany, setTooMany] = useState(false);
 
   // fetch movies based on input
   const fetchMovies = async () => {
-    const res = await fetch(
-      `http://www.omdbapi.com/?apikey=${process.env.REACT_APP_KEY}&s=${input}`
-    );
-    const body = await res.json();
-    setMovies(body.Search);
+    try {
+      const res = await fetch(
+        `http://www.omdbapi.com/?apikey=${process.env.REACT_APP_KEY}&s=${input}`
+      );
+      const body = await res.json();
+      console.log(body);
+      if (body.Response === "False") {
+        if (body.Error === "Too many results.") {
+          setTooMany(true);
+        }
+      }
+      setMovies(body.Search);
+    } catch (err) {
+      console.log(err);
+    }
+
+    setLoading(false);
   };
 
   // fetch movies based on ID
@@ -29,8 +42,8 @@ function App() {
   };
 
   // save nominations to localStorage
-  const saveNominations = (item) => {
-    localStorage.setItem("nominations", JSON.stringify(item));
+  const saveNominations = (nominations) => {
+    localStorage.setItem("nominations", JSON.stringify(nominations));
   };
 
   // return nominations from localStorage
@@ -78,11 +91,16 @@ function App() {
 
   // https://typeofnan.dev/debouncing-with-react-hooks/
   useEffect(() => {
+    setTooMany(false);
     if (input !== "") {
       const request = setTimeout(() => {
         fetchMovies();
       }, 1000);
+      setLoading(true);
       return () => clearTimeout(request);
+    } else {
+      setMovies(undefined);
+      setLoading(false);
     }
   }, [input]);
 
@@ -112,6 +130,8 @@ function App() {
               nominations={nominations}
               input={input}
               movies={movies}
+              loading={loading}
+              tooMany={tooMany}
             />
           </Route>
           <Route

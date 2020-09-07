@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Placeholder from "../assets/imgNot.jpg";
 
 const Card = ({ movie, addNomination, nominations }) => {
   const [disabled, setDisabled] = useState(false);
@@ -12,11 +13,18 @@ const Card = ({ movie, addNomination, nominations }) => {
     if (nominations.length >= 5) {
       setDisabled(true);
     }
-  }, [nominations]);
+  }, [nominations, movie]);
+
+  let poster;
+  if (movie.Poster === "N/A") {
+    poster = Placeholder;
+  } else {
+    poster = movie.Poster;
+  }
   return (
     <li className="card">
       <div className="image">
-        <img src={movie.Poster} alt={movie.Title} />
+        <img src={poster} alt={movie.Title} />
       </div>
       <div className="info">
         <div className="text">

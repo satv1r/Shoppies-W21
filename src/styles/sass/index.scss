@@ -11,6 +11,18 @@ $accent-color: #95bf47;
   font-family: "Montserrat", sans-serif;
 }
 
+// General Styles
+
+button {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: none;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
 a {
   text-decoration: none;
   color: $primary-color;
@@ -162,8 +174,19 @@ nav {
   }
 }
 
-.results {
+.results,
+.resultsMessage {
   width: 65%;
+}
+
+.resultsMessage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.results {
   p {
     font-weight: 300;
     font-size: 1rem;
@@ -200,10 +223,7 @@ nav {
     }
 
     button {
-      border: none;
       background-color: $accent-color;
-      padding: 0.5rem;
-      font-size: 1rem;
     }
   }
 }
@@ -240,9 +260,7 @@ nav {
 
     button {
       width: 60%;
-      padding: 0.5rem;
       margin-top: 0.5rem;
-      border: none;
       background: $accent-color;
     }
   }

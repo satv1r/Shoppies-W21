@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Card from "./Card";
 
-const Results = ({ query, movies, addNomination, nominations }) => {
+const Results = ({ query, movies, addNomination, nominations, loading }) => {
   // create page state to keep track of pagination
   const [page, setPage] = useState(0);
 
@@ -38,42 +38,45 @@ const Results = ({ query, movies, addNomination, nominations }) => {
           </p>
         )}
       </h2>
-      <div className="cards">
-        <ul>
-          {moviesToRender.map((movie) => {
-            return (
-              <Card
-                movie={movie}
-                key={movie.imdbID}
-                addNomination={addNomination}
-                nominations={nominations}
-              />
-            );
-          })}
-        </ul>
-        {movies && movies.length > 0 && (
-          <div className="buttons">
-            {page > 0 ? (
-              <button onClick={prevPage}>Prev Page</button>
-            ) : (
-              <button onClick={prevPage} disabled>
-                Prev Page
-              </button>
-            )}
+      {loading && <i className="fas fa-spinner fa-spin"></i>}
+      {!loading && (
+        <div className="cards">
+          <ul>
+            {moviesToRender.map((movie) => {
+              return (
+                <Card
+                  movie={movie}
+                  key={movie.imdbID}
+                  addNomination={addNomination}
+                  nominations={nominations}
+                />
+              );
+            })}
+          </ul>
+          {movies && movies.length > 0 && (
+            <div className="buttons">
+              {page > 0 ? (
+                <button onClick={prevPage}>Prev Page</button>
+              ) : (
+                <button onClick={prevPage} disabled>
+                  Prev Page
+                </button>
+              )}
 
-            <p>
-              Showing page {page + 1} of {Math.ceil(movies.length / 4)}
-            </p>
-            {page < Math.ceil(movies.length / 4 - 1) ? (
-              <button onClick={nextPage}>Next Page</button>
-            ) : (
-              <button onClick={nextPage} disabled>
-                Next Page
-              </button>
-            )}
-          </div>
-        )}
-      </div>
+              <p>
+                Showing page {page + 1} of {Math.ceil(movies.length / 4)}
+              </p>
+              {page < Math.ceil(movies.length / 4 - 1) ? (
+                <button onClick={nextPage}>Next Page</button>
+              ) : (
+                <button onClick={nextPage} disabled>
+                  Next Page
+                </button>
+              )}
+            </div>
+          )}
+        </div>
+      )}
     </div>
   );
 };

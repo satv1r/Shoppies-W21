@@ -18,7 +18,7 @@ function App() {
   const fetchMovies = async () => {
     try {
       const res = await fetch(
-        `http://www.omdbapi.com/?apikey=${process.env.REACT_APP_KEY}&s=${input}`
+        `https://www.omdbapi.com/?apikey=${process.env.REACT_APP_KEY}&s=${input}`
       );
       const body = await res.json();
       console.log(body);
@@ -38,7 +38,7 @@ function App() {
   // fetch movies based on ID
   const fetchMovieByID = async (id) => {
     const res = await fetch(
-      `http://www.omdbapi.com/?apikey=${process.env.REACT_APP_KEY}&i=${id}`
+      `https://www.omdbapi.com/?apikey=${process.env.REACT_APP_KEY}&i=${id}`
     );
     const body = await res.json();
     return body;

@@ -14,6 +14,8 @@ function App() {
   const [alertMessage, setAlertMessage] = useState("");
   const [showAlert, setShowAlert] = useState(false);
 
+  console.log(process.env.REACT_APP_LINK);
+
   // fetch movies based on input
   const fetchMovies = async () => {
     try {

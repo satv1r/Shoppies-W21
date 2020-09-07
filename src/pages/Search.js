@@ -22,8 +22,7 @@ const Search = ({
     triggerAlert("Copied Link to Clipboard!");
   };
 
-  let link = JSON.stringify(process.env.REACT_APP_LINK);
-  console.log(process.env.REACT_APP_LINK);
+  let link = process.env.REACT_APP_LINK;
 
   nominations.forEach((movie) => {
     link = link.concat(`${movie.imdbID}&`);
